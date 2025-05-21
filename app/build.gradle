@@ -7,6 +7,8 @@ plugins {
 android {
     namespace 'com.example.javamaps'
     compileSdk 34
+    def MAPS_API_KEY = project.hasProperty("MAPS_API_KEY") ? project.MAPS_API_KEY : ""
+
 
     defaultConfig {
         applicationId "com.example.javamaps"
