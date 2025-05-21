@@ -15,4 +15,4 @@
 local.properties
 *.aab
 app/release/
-gradle.properties
+/gradle.properties
