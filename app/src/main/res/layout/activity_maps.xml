@@ -12,25 +12,19 @@
         android:layout_height="0dp"
         map:layout_constraintBottom_toTopOf="@+id/placenameText"
         map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.0"
         map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintVertical_bias="0.0"
         tools:context=".view.MapsActivity" />
 
-    <EditText
-        android:id="@+id/placenameText"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
         android:hint="Enter Place Name"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:inputType="text"
-        map:layout_constraintBottom_toTopOf="@+id/savebutton"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent" />
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/savebutton"
@@ -67,6 +61,37 @@
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/placenameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        map:layout_constraintBottom_toTopOf="@+id/savebutton"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_bg"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.075"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:backgroundTint="#000000"
+            android:elevation="10dp"
+            android:onClick="backToHomePage"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

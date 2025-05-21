@@ -16,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [ MAPS_API_KEY: MAPS_API_KEY ]
     }
 
     buildTypes {
@@ -33,12 +35,8 @@ android {
         buildConfig true
     }
 
-    def localProperties = new Properties()
-    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-    defaultConfig {
-        buildConfigField "String", "API_KEY", "\"${localProperties.getProperty('API_KEY')}\""
-    }
 }
+
 
 dependencies {
 
@@ -55,4 +53,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava3:$room_version"
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+    
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 }

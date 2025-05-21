@@ -1,7 +1,9 @@
 package com.example.javamaps.view;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.room.Room;
 
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.javamaps.R;
+import com.example.javamaps.adapter.SwipeToDeleteCallback;
 import com.example.javamaps.adapter.PlaceAdapter;
 import com.example.javamaps.databinding.ActivityMainBinding;
 import com.example.javamaps.roomdb.PlaceDao;
@@ -22,7 +25,6 @@ import com.example.javamaps.view.model.Place;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -51,10 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void handleResponse(List<Place> placeList){
+    private void handleResponse(List<Place> placeList) {
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(this));
         PlaceAdapter placeAdapter = new PlaceAdapter(placeList);
         binding.recyclerview.setAdapter(placeAdapter);
+
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(this, placeAdapter, placeDao));
+        itemTouchHelper.attachToRecyclerView(binding.recyclerview);
     }
 
 
@@ -80,5 +86,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         compositeDisposable.clear();
+    }
+
+    public void goToMaps(View view){
+        Intent intent = new Intent(this,MapsActivity.class);
+        intent.putExtra("info","new");
+        startActivity(intent);
     }
 }

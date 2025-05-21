@@ -13,8 +13,10 @@ public class Place implements Serializable {
 
     @ColumnInfo(name = "place_name")
     public String name;
+
     @ColumnInfo(name = "latitude")
     public Double latitude;
+
 
     @ColumnInfo(name = "longitude")
     public Double longitude;
@@ -24,5 +26,6 @@ public class Place implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
 
 }

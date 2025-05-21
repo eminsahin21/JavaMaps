@@ -12,6 +12,7 @@ import com.example.javamaps.databinding.RecyclerRowBinding;
 import com.example.javamaps.view.MapsActivity;
 import com.example.javamaps.view.model.Place;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder> {
@@ -21,6 +22,15 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder>
     public PlaceAdapter(List<Place> placelist) {
         this.placelist = placelist;
     }
+    public List<Place> getPlaceList() {
+        return placelist;
+    }
+    public void setPlaceList(List<Place> newList) {
+        placelist = newList;
+        notifyDataSetChanged(); // veya notifyItemRemoved(position) gibi daha özelleştirilmiş şekilde
+    }
+
+
 
     @NonNull
     @Override
@@ -36,7 +46,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder>
 
     @Override
     public void onBindViewHolder(@NonNull PlaceHolder holder, int position) {
-        holder.recyclerRowBinding.recyclerViewTextView.setText(placelist.get(position).name);
+        holder.recyclerRowBinding.textViewItem.setText(placelist.get(position).name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
