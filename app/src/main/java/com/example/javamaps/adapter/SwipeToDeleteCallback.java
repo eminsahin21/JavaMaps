@@ -17,6 +17,9 @@ import com.example.javamaps.R;
 import com.example.javamaps.adapter.PlaceAdapter;
 import com.example.javamaps.roomdb.PlaceDao;
 import com.example.javamaps.view.model.Place;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -37,7 +40,7 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
         this.adapter = adapter;
         this.placeDao = placeDao;
 
-        icon = ContextCompat.getDrawable(context, R.drawable.ic_delete);
+        icon = ContextCompat.getDrawable(context, R.drawable.delete_24);
         background = new ColorDrawable(Color.RED);
     }
 
@@ -51,17 +54,34 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
-
         Place placeToDelete = adapter.getPlaceList().get(position);
 
+        // Room'dan sil
         compositeDisposable.add(
                 placeDao.delete(placeToDelete)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> {
+                            // Listeden sil
                             adapter.getPlaceList().remove(position);
                             adapter.notifyItemRemoved(position);
-                            Toast.makeText(context, "Silindi", Toast.LENGTH_SHORT).show();
+
+                            // Snackbar ile geri al seçeneği göster
+                            Snackbar.make(viewHolder.itemView, "Konum silindi", Snackbar.LENGTH_LONG)
+                                    .setAction("Geri Al", v -> {
+                                        // Room'a tekrar ekle
+                                        compositeDisposable.add(
+                                                placeDao.insert(placeToDelete)
+                                                        .subscribeOn(Schedulers.io())
+                                                        .observeOn(AndroidSchedulers.mainThread())
+                                                        .subscribe(() -> {
+                                                            adapter.getPlaceList().add(position, placeToDelete);
+                                                            adapter.notifyItemInserted(position);
+                                                            Toast.makeText(context, "Konum geri alındı", Toast.LENGTH_SHORT).show();
+                                                        }, Throwable::printStackTrace)
+                                        );
+                                    })
+                                    .show();
                         }, throwable -> {
                             throwable.printStackTrace();
                             Toast.makeText(context, "Silme işlemi başarısız", Toast.LENGTH_SHORT).show();

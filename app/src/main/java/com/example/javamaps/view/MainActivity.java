@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+
         db  = Room.databaseBuilder(getApplicationContext(), PlaceDatabase.class, "Places").build();
         placeDao = db.placeDao();
 

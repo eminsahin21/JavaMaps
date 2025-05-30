@@ -19,6 +19,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.javamaps.R;
@@ -33,6 +35,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.javamaps.databinding.ActivityMapsBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Scheduler;
@@ -87,6 +90,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         binding.savebutton.setEnabled(false);
+
+
+        TextInputEditText placeNameText = findViewById(R.id.placenameText);
+
+        placeNameText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEND) {
+                // Klavyeyi gizle
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(placeNameText.getWindowToken(), 0);
+                }
+                return true;
+            }
+            return false;
+        });
+
 
     }
 
