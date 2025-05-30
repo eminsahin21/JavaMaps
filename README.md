@@ -1,4 +1,4 @@
-# Java Maps Application
+# PinMap Application
 
 A simple map application developed in Java. This application allows users to select and save locations on the map.
 
@@ -13,7 +13,7 @@ A simple map application developed in Java. This application allows users to sel
 
 1. **Clone the project:**
    ```sh
-   git clone https://github.com/username/javamaps.git
+   git clone https://github.com/username/pinmap.git
    cd javamaps
    ```
 
