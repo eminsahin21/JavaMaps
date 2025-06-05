@@ -77,28 +77,22 @@
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+
+    <ImageView
+        android:id="@+id/backHome"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:elevation="10dp"
         android:background="@drawable/button_bg"
+        android:elevation="10dp"
+        android:onClick="backToHomePage"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/back"
         map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintHorizontal_bias="0.075"
+        map:layout_constraintHorizontal_bias="0.043"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/backHome"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/back"
-            android:backgroundTint="#000000"
-            android:elevation="10dp"
-            android:onClick="backToHomePage"
-            android:textAlignment="center" />
-    </androidx.cardview.widget.CardView>
+        map:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
