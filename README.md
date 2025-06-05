@@ -1,47 +1,76 @@
-# PinMap Application
 
-A simple map application developed in Java. This application allows users to select and save locations on the map.
+# 📍 PinMap Uygulaması
 
-## ✨ Features
-- Select locations on the map
-- Save selected locations
-- Delete selected locations
-- List saved locations
-- Reactive programming with RxJava
+PinMap, kullanıcıların harita üzerinde konum seçip kaydedebileceği basit bir Android harita uygulamasıdır. Java ile geliştirilmiş olup, reaktif programlama yaklaşımıyla çalışır.
 
-## 📝 Installation
+## ✨ Özellikler
 
-1. **Clone the project:**
-   ```sh
+- 📌 Harita üzerinden konum seçimi  
+- 💾 Seçilen konumu kaydetme  
+- 🗑️ Kayıtlı konumu silme  
+- 📃 Kayıtlı konumları listeleme  
+- ⚡ Reaktif programlama (RxJava)
+
+## 📲 Kurulum
+
+1. **Projeyi Klonlayın:**
+
+   ```bash
    git clone https://github.com/username/pinmap.git
    cd pinmap
    ```
 
-2. **Open with Android Studio:**
-   - Open Android Studio and select "Open an Existing Project" to choose the project directory.
-   
-3. **Load dependencies:**
-   - Click the **"Sync Now"** button to synchronize Gradle files.
-   
-4. **Run the application:**
-   - Select your device or emulator and click the **Run ▶** button.
+2. **Android Studio ile Açın:**
 
-## 🌍 Technologies Used
-- **Java** 
-- **Android SDK**
-- **Google Maps API**
-- **RxJava & RxAndroid**
-- **Room Database**
+   - Android Studio’yu açın ve “Open an Existing Project” seçeneği ile proje klasörünü seçin.
 
-## 📷 Screenshots
+3. **Bağımlılıkları Yükleyin:**
 
-| Home Page | Save Location | Delete Location |
-|-----------|--------------|----------|
-|<img src="https://github.com/user-attachments/assets/03941ae6-a918-4285-bf6f-98c9beeef658" width="250"> | <img src="https://github.com/user-attachments/assets/da2b8ae7-4ab2-4453-8a62-06c1fb98746f" width="250"> | <img src="https://github.com/user-attachments/assets/08b366b8-fee6-4ccf-bb3a-ebe34d110007" width="250"> |
+   - Gradle dosyaları senkronize etmek için **“Sync Now”** butonuna tıklayın.
 
-## 💪 Contributing
-To contribute, please create a **pull request** or open an **issue**!
+4. **Uygulamayı Çalıştırın:**
 
-## ⭐ Star
-If you like this project give me a star! 😊
+   - Cihazınızı veya emülatörünüzü seçin ve **Çalıştır (▶)** butonuna tıklayın.
 
+## 🛠️ Kullanılan Teknolojiler
+
+- **Java**  
+- **Android SDK**  
+- **Google Maps API**  
+- **RxJava & RxAndroid**  
+- **Room Veritabanı**
+
+## 🖼️ Ekran Görüntüleri
+
+<table>
+  <thead>
+    <tr>
+      <th>Ana Sayfa</th>
+      <th>Konum Kaydetme</th>
+      <th>Konum Silme</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/1fdc928d-e5cf-4d31-b74b-5e9acc0155bf" width="200"/>
+      </td>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/2666bcf6-02d6-491e-b26a-703857c299af" width="200"/>
+      </td>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/881c4b31-65c3-4ffe-bcc1-d33601fbfcf9" width="200"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+## 🤝 Katkıda Bulunmak
+
+Geliştirmelere katkı sağlamak isterseniz, bir **pull request** oluşturabilir ya da **issue** açabilirsiniz!
+
+## ⭐ Destek Ol
+
+Projeyi beğendiyseniz ⭐ vererek destek olabilirsiniz! 😊
